@@ -62,8 +62,8 @@ class BulletinsRecord extends \yii\db\ActiveRecord
 
     public function getPhoto()
     {
-        return $this->hasMany(PhotoRecord::classname,
-            ['bull_id', 'id']);
+        return $this->hasMany(PhotoRecord::classname(),
+            ['bull_id'=>'id']);
     }
 
     public function setNewRecord($bull, $session_id)
