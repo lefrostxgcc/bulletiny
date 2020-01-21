@@ -19,7 +19,7 @@ $this->title = 'My Yii Application';
             <?php foreach($bulletins as $bull) { ?>
             <div class="col-sm-6 col-md-4 col-ld-3">
                 <a href="#" class="thumbnail">
-                    <img src="https://via.placeholder.com/150"
+                    <img src='<?=$path.$no_photo?>'
                     alt="no" title="Подробнее" />
                 </a>
             <p><?=$bull->title?></p>

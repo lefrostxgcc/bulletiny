@@ -65,7 +65,14 @@ class SiteController extends Controller
         $bulletins = BulletinsRecord::find()
             ->where(['status' => 'public'])
             ->all();
-        return $this->render('index', ['bulletins'=>$bulletins]);
+        $imagePath = Yii::$app->params['imagePath'];
+        $defaultImage = Yii::$app->params['defaultImage'];
+        return $this->render('index',
+        [
+            'bulletins'=>$bulletins,
+            'path'=>$imagePath,
+            'no_photo'=>$defaultImage
+        ]);
     }
 
     /**

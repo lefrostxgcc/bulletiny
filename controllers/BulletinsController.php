@@ -18,9 +18,12 @@ class BulletinsController extends Controller
         $public_bulletins = $this->getBulletins('public');
         $delete_bulletins = $this->getBulletins('delete');
         return $this->render('index',
-            ['wait_bulletins'=>$wait_bulletins,
+            [
+                'wait_bulletins'=>$wait_bulletins,
                 'public_bulletins'=>$public_bulletins,
-                'delete_bulletins'=>$delete_bulletins]);
+                'delete_bulletins'=>$delete_bulletins
+            ]
+        );
     }
 
     private function getBulletins($status='wait')
