@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use yii\web\UploadedFile;
 
 class PhotoForm extends Model
 {
@@ -30,5 +31,17 @@ class PhotoForm extends Model
                 'link' => 'Ссылка',
                 'info' => 'Информация',
         ];
+    }
+
+    public function upload()
+    {
+        if ($this->validate())
+        {
+            $this->file->saveAs(
+                Yii::$app->params['imagePath'].
+                $this->file->baseName.
+                '_'.time().
+                '.'.$this->file->extension);
+        }
     }
 }
