@@ -15,9 +15,9 @@ class PhotoForm extends Model
     {
         return
             [
-                [['file'], 'file', 'extensions'='jpg,png',
+                [['file'], 'file', 'extensions'=>'jpg,png',
                     'message'=>'Фото должно быть формата jpg или png',
-                    'skipOnEmpty'=>false],
+                    'skipOnEmpty'=>'false'],
                 [['link', 'info'], 'string'],
         ];
     }
