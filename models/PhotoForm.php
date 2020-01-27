@@ -35,13 +35,15 @@ class PhotoForm extends Model
 
     public function upload()
     {
-        if ($this->validate())
-        {
-            $this->file->saveAs(
-                Yii::$app->params['imagePath'].
+        $this->file = UploadedFile::getInstance($this, 'file');
+        $this->file->saveAs(
+            Yii::$app->params['imagePath'].
                 $this->file->baseName.
                 '_'.time().
                 '.'.$this->file->extension);
-        }
+        $this->link =  Yii::$app->params['imagePath'].
+                $this->file->baseName.
+                '_'.time().
+                '.'.$this->file->extension;
     }
 }

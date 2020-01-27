@@ -13,8 +13,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $form->field($photo, 'file')->fileInput() ?>
 
-    <?= $form->field($photo, 'info')->textArea() ?>
-
     <?= Html::submitButton('Сохранить',
     ['class'=>'btn btn-primary', 'name'=>'addphoto-button']); ?>
     

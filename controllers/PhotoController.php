@@ -19,16 +19,22 @@ class PhotoController extends Controller
             ->one();
         return $this->render('index',
             ['currBulletin' => $currBulletin]);
-        }
+    }
 
-    public function actionAdd()
+    public function actionAdd($id=1)
     {
         $Photo = new PhotoForm();
         if (Yii::$app->request->isPost)
         {
-            $Photo->file = UploadedFile::getInstance($Photo, 'file');
-            if ($Photo->upload())
+            if ($Photo->validate())
+            {
+                $Photo->upload();
+                $PhotoRec = new PhotoRecord();
+                $PhotoRec->link = $Photo->link;
+                $PhotoRec->bull_id = $id;
+                $PhotoRec->save();
                 return $this->redirect('/photo/index');
+            }
         }
         return $this->render('add', ['photo' => $Photo]);
     }
