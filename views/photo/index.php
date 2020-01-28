@@ -23,6 +23,19 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?=$photo_->info?>
             </p>
         </a>
+        <div class="btn-group">
+            <button type="button"
+                class="btn btn-default dropdown-toggle"
+                data-toggle="dropdown">
+                Управление <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Информация</a></li>
+                <li><a href="#">Сделать главной</a></li>
+                <li class="divider" role='separator'></li>
+                <li><a href="#">Удалить фото</a></li>
+            </ul>
+        </div>
     </div>
     <?php } ?>
 </div>
