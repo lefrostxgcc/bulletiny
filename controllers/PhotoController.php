@@ -38,4 +38,9 @@ class PhotoController extends Controller
         }
         return $this->render('add', ['photo' => $Photo]);
     }
+
+    public function actionTest()
+    {
+        return $this->render('test');
+    }
 }
