@@ -21,6 +21,19 @@ $this->params['breadcrumbs'][] = $this->title;
             <img src="/<?=$photo_->link?>" alt="no_photo" />
             <p>
                 <?=$photo_->info?>
+                <div class="input-group infofield" style="display:none;"
+                    data-id="<?=$photo_->id?>">
+                    
+                    <input type="text" data-id="<?=$photo_->id?>"
+                    class="form-control" />
+                    
+                    <span class="input-group-btn">
+                        <button class="btn btn-success infosave"
+                            data-id="<?=$photo_->id?>">
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </button>
+                    </span>
+                </div>
             </p>
         </a>
         <div class="btn-group">
@@ -30,7 +43,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 Управление <span class="caret"></span>
             </button>
             <ul class="dropdown-menu">
-                <li><a href="#">Информация</a></li>
+                <li>
+                    <a href="#" class="infobutton" data-id="<?=$photo_->id?>">
+                        Информация
+                    </a>
+                </li>
                 <li><a href="#">Сделать главной</a></li>
                 <li class="divider" role='separator'></li>
                 <li><a href="#">Удалить фото</a></li>
