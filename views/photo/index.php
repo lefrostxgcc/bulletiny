@@ -21,11 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
             <img src="/<?=$photo_->link?>" alt="no_photo" />
             <p>
                 <?=$photo_->info?>
-                <div class="input-group infofield" style="display:none;"
+                <div class="input-group info" style="display:none;"
                     data-id="<?=$photo_->id?>">
                     
                     <input type="text" data-id="<?=$photo_->id?>"
-                    class="form-control" />
+                    class="form-control infofield" />
                     
                     <span class="input-group-btn">
                         <button class="btn btn-success infosave"

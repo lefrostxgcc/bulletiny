@@ -43,4 +43,20 @@ class PhotoController extends Controller
     {
         return $this->render('test');
     }
+
+    public function actionSetinfo()
+    {
+        if (Yii::$app->request->isAjax)
+        {
+            $this_id = $_POST['id'];
+            $this_info = $_POST['info'];
+            $photoRecord = PhotoRecord::find()
+                ->where(['id'=>$this_id])
+                ->one();
+            $photoRecord->info = $this_info;
+            $photoRecord->save();
+
+            return "Запрос выполнен id=".$this_id." info: ".$this_info;
+        }
+    }
 }

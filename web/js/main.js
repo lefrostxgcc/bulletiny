@@ -16,13 +16,28 @@ $("#tb").on("click", function()
 $(".infobutton").on("click", function()
 		    {
 			var r = $(this).data('id');
-			$("[data-id='" + r + "'].infofield").show();
+			$("[data-id='" + r + "'].info").show();
 		    }
 		   );
 
 $(".infosave").on("click", function()
 		    {
 			var r = $(this).data('id');
-			$("[data-id='" + r + "'].infofield").hide();
+			var info_ =
+			    $("[data-id='" + r + "'].infofield").val();
+			$.ajax({
+			    type: "POST",
+			    url: "setinfo",
+			    data: {id: r, info: info_},
+			    success: function(res)
+			    {
+				alert(res);
+			    },
+			    error: function()
+			    {
+				alert("error!");
+			    }
+			});
+			$('body').load('/photo/');
 		    }
 		   );
