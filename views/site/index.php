@@ -19,7 +19,8 @@ $this->title = 'My Yii Application';
             <?php foreach($bulletins as $bull) { ?>
             <div class="col-sm-6 col-md-4 col-ld-3">
                 <a href="#" class="thumbnail">
-                    <img src='<?=$path.$no_photo?>'
+                <img src='<?=$bull->getAvatar()?>'
+                    style="height: 200px;"
                     alt="no" title="Подробнее" />
                 </a>
             <p><?=$bull->title?></p>

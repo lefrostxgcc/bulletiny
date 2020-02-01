@@ -34,7 +34,7 @@ class BulletinsRecord extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'required'],
-            [['user_id'], 'integer'],
+            [['user_id', 'avatar'], 'integer'],
             [['date_pub'], 'safe'],
             [['price'], 'number'],
             [['title', 'info', 'contacts', 'city', 'status'], 'string',
@@ -57,6 +57,7 @@ class BulletinsRecord extends \yii\db\ActiveRecord
             'city' => 'City',
             'price' => 'Price',
             'status' => 'Status',
+            'avatar' => 'Avatar',
         ];
     }
 
@@ -91,5 +92,16 @@ class BulletinsRecord extends \yii\db\ActiveRecord
     public function setWait()
     {
         $this->status = 'wait';
+    }
+
+    public function getAvatar()
+    {
+        $photoRec = PhotoRecord::find()
+            ->where(['id'=>$this->avatar])
+            ->one();
+        if (isset($photoRec))
+            return $photoRec->link;
+        else
+            return Yii::$app->params['imagePath'].Yii::$app->params['defaultImage'];
     }
 }
