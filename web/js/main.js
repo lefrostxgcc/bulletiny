@@ -16,28 +16,43 @@ $("#tb").on("click", function()
 $(".infobutton").on("click", function()
 		    {
 			var r = $(this).data('id');
-			$("[data-id='" + r + "'].info").show();
-		    }
-		   );
-
-$(".infosave").on("click", function()
-		    {
-			var r = $(this).data('id');
-			var info_ =
-			    $("[data-id='" + r + "'].infofield").val();
 			$.ajax({
 			    type: "POST",
-			    url: "setinfo",
-			    data: {id: r, info: info_},
+			    url: "getinfo",
+			    data: {id: r},
 			    success: function(res)
 			    {
-				alert(res);
+				//alert(res);
+				$("[data-id='" + r + "'].infofield").val(res);
 			    },
 			    error: function()
 			    {
 				alert("error!");
 			    }
 			});
-			$('body').load('/photo/');
+			$("[data-id='" + r + "'].info").show();
 		    }
 		   );
+
+$(".infosave").on("click", function()
+		  {
+		      var r = $(this).data('id');
+		      var info_ =
+			  $("[data-id='" + r + "'].infofield").val();
+		      $.ajax({
+			  type: "POST",
+			  url: "setinfo",
+			  data: {id: r, info: info_},
+			  success: function(res)
+			  {
+			      //alert(res);
+			  },
+			  error: function()
+			  {
+			      alert("error!");
+			  }
+		      });
+		      //location.reload();
+		      $('body').load('/photo/index');
+		  }
+		 );

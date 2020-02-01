@@ -59,4 +59,19 @@ class PhotoController extends Controller
             return "Запрос выполнен id=".$this_id." info: ".$this_info;
         }
     }
+
+    public function actionGetinfo()
+    {
+        if (Yii::$app->request->isAjax)
+        {
+            $this_id = $_POST['id'];
+            $photoRecord = PhotoRecord::find()
+                ->where(['id'=>$this_id])
+                ->one();
+            $this_info = $photoRecord->info;
+            //$photoRecord->save();
+
+            return $this_info;
+        }
+    }
 }
