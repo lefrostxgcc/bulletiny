@@ -14,8 +14,10 @@ class PhotoController extends Controller
 {
     public function actionIndex($id=1)
     {
+        if (Yii::$app->user->isGuest)
+            return $this->redirect('/site/login');
         $currBulletin = BulletinsRecord::find()
-            ->where($id)
+            ->where(['id'=>$id])
             ->one();
         return $this->render('index',
             ['currBulletin' => $currBulletin]);
@@ -23,6 +25,8 @@ class PhotoController extends Controller
 
     public function actionAdd($id=1)
     {
+        if (Yii::$app->user->isGuest)
+            return $this->redirect('/site/login');
         $Photo = new PhotoForm();
         if (Yii::$app->request->isPost)
         {
@@ -33,19 +37,16 @@ class PhotoController extends Controller
                 $PhotoRec->link = $Photo->link;
                 $PhotoRec->bull_id = $id;
                 $PhotoRec->save();
-                return $this->redirect('/photo/index');
+                return $this->redirect('/photo/index?id='.$id);
             }
         }
         return $this->render('add', ['photo' => $Photo]);
     }
 
-    public function actionTest()
-    {
-        return $this->render('test');
-    }
-
     public function actionSetinfo()
     {
+        if (Yii::$app->user->isGuest)
+            return $this->redirect('/site/login');
         if (Yii::$app->request->isAjax)
         {
             $this_id = $_POST['id'];
@@ -62,6 +63,8 @@ class PhotoController extends Controller
 
     public function actionGetinfo()
     {
+        if (Yii::$app->user->isGuest)
+            return $this->redirect('/site/login');
         if (Yii::$app->request->isAjax)
         {
             $this_id = $_POST['id'];
