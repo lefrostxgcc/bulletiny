@@ -77,4 +77,21 @@ class PhotoController extends Controller
             return $this_info;
         }
     }
+
+    public function actionSetavatar()
+    {
+        if (Yii::$app->user->isGuest)
+            return $this->redirect('/site/login');
+        if (Yii::$app->request->isAjax)
+        {
+            $photo_id = $_POST['PhotoId'];
+            $bull_id = $_POST['BullId'];
+            $bullRec = BulletinsRecord::find()
+                ->where(['id' =>$bull_id])
+                ->one();
+            $bullRec->avatar = $photo_id;
+            $bullRec->save();
+            return "Изображение установлено в качестве главного";
+        }
+    }
 }

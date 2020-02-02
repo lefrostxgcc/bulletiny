@@ -34,6 +34,25 @@ $(".infobutton").on("click", function()
 		    }
 		   );
 
+$(".avabutton").on("click", function()
+		   {
+		       currPhotoId = $(this).data('id');
+		       currBullId = $(this).attr('bull');
+		       $.ajax({
+			   type: 'POST',
+			   url: 'setavatar',
+			   data: {PhotoId: currPhotoId, BullId: currBullId},
+			   success: function(res)
+			   {
+			       alert(res);
+			   },
+			   error: function()
+			   {
+			       alert('error!');
+			   }
+		       });
+		   });
+
 $(".infosave").on("click", function()
 		  {
 		      var r = $(this).data('id');
