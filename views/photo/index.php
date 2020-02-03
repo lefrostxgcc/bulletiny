@@ -48,15 +48,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         Информация
                     </a>
                 </li>
-            <li>
-            <a href="#" class="avabutton"
-                data-id="<?=$photo_->id?>"
-                bull="<?=$currBulletin->id?>">
-                Сделать главной
-            </a>
-        </li>
+                <li>
+                    <a href="#" class="avabutton"
+                        data-id="<?=$photo_->id?>"
+                        bull="<?=$currBulletin->id?>">
+                        Сделать главной
+                    </a>
+                </li>
                 <li class="divider" role='separator'></li>
-                <li><a href="#">Удалить фото</a></li>
+                <li>
+                    <a href="#" class="deletebutton"
+                        data-id="<?=$photo_->id?>">
+                        Удалить фото
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

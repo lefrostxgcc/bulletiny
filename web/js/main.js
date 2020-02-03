@@ -75,3 +75,16 @@ $(".infosave").on("click", function()
 		      $('body').load('/photo/index');
 		  }
 		 );
+
+$('.deletebutton').on('click', function() {
+    var r = $(this).data('id');
+    var del = confirm('Вы действительно хотите удалить это изображение?');
+    if (del == true)
+    {
+	alert('Вы выбрали OK');
+    }
+    else
+    {
+	alert('Вы выбрали Отмена');
+    }
+});
