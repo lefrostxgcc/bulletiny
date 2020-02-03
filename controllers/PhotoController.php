@@ -94,4 +94,20 @@ class PhotoController extends Controller
             return "Изображение установлено в качестве главного";
         }
     }
+
+    public function actionSetdelete()
+    {
+        if (Yii::$app->user->isGuest)
+            return $this->redirect('/site/login');
+        if (Yii::$app->request->isAjax)
+        {
+            $photo_id = $_POST['id'];
+            $photoRec = PhotoRecord::find()
+                ->where(['id'=>$photo_id])
+                ->one();
+            $photoRec->deleteFile();
+            $photoRec->delete();
+            return 'Изображение удалено';
+        }
+    }
 }

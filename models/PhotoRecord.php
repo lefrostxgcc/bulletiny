@@ -46,4 +46,10 @@ class PhotoRecord extends \yii\db\ActiveRecord
             'info' => 'Info',
         ];
     }
+
+    public function deleteFile()
+    {
+        $file_ = $this->link;
+        unlink($file_);
+    }
 }

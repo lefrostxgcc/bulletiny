@@ -81,10 +81,23 @@ $('.deletebutton').on('click', function() {
     var del = confirm('Вы действительно хотите удалить это изображение?');
     if (del == true)
     {
-	alert('Вы выбрали OK');
+	$.ajax({
+	    type: "POST",
+	    url: "setdelete",
+	    data: {id: r},
+	    success: function(res)
+	    {
+		alert(res);
+	    },
+	    error: function()
+	    {
+		alert("error!");
+	    }
+	});
+	$('body').load('/photo/index');
     }
     else
     {
-	alert('Вы выбрали Отмена');
+	alert('Удаление отменено');
     }
 });
