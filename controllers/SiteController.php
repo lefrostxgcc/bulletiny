@@ -68,11 +68,17 @@ class SiteController extends Controller
         $imagePath = Yii::$app->params['imagePath'];
         $defaultImage = Yii::$app->params['defaultImage'];
         return $this->render('index',
-        [
-            'bulletins'=>$bulletins,
-            'path'=>$imagePath,
-            'no_photo'=>$defaultImage
+            [
+                'bulletins'=>$bulletins,
+                'path'=>$imagePath,
+                'no_photo'=>$defaultImage
         ]);
+    }
+
+    public function actionViewBulletin($id = 1)
+    {
+        $bulletin = BulletinsRecord::findOne($id);
+        return $this->render('viewbulletin', ['bulletin' => $bulletin]);
     }
 
     /**
