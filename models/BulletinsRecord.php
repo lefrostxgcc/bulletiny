@@ -37,8 +37,7 @@ class BulletinsRecord extends \yii\db\ActiveRecord
             [['user_id', 'avatar'], 'integer'],
             [['date_pub'], 'safe'],
             [['price'], 'number'],
-            [['title', 'info', 'contacts', 'city', 'status'], 'string',
-                'max' => 255],
+            [['title', 'info', 'contacts', 'city', 'status'], 'string'],
         ];
     }
 
@@ -71,7 +70,7 @@ class BulletinsRecord extends \yii\db\ActiveRecord
     {
         $this->user_id = $session_id;
         $this->title = $bull->title;
-        $this->info = $bull->info;
+        $this->info = nl2br($bull->info);
         $this->contacts = $bull->contacts;
         $this->city = $bull->city;
         $this->price = $bull->price;
