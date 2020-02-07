@@ -5,20 +5,44 @@
             <img src="/<?=$bulletin->getAvatar()?>" alt="ava"
             style="height: 400px;" />
         </p>
-        <p><?=$bulletin->info?></p>
     </div>
     <div class="col-lg-6 col-md-6">
-        <div class="row">
-            Цена <strong><?=$bulletin->price?></strong>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <i class="glyphicon glyphicon-hand-down"></i>
+                Информация
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <td>Цена:</td>
+                        <td>
+                            <strong><?=$bulletin->price?></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Город:</td>
+                        <td>
+                            <strong><?=$bulletin->city?></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Контакты:</td>
+                        <td>
+                            <strong><?=$bulletin->contacts?></strong>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div class="row">
-            Город: <strong><?=$bulletin->city?></strong>
+            <?=$bulletin->info?>
         </div>
         <div class="row">
-            Контактная информация: <strong><?=$bulletin->contacts?></strong>
-        </div>
-        <div class="row">
-            Дата публикации: <strong><?=$bulletin->date_pub?></strong>
+            <hr>
+                Дата публикации:
+                <span class="badge"><?=$bulletin->date_pub?></span>
+            </div>
         </div>
     </div>
 </div>
