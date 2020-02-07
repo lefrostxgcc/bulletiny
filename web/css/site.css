@@ -113,3 +113,16 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+
+#bulltopmenu {
+    background-color: blue;
+}
+
+#bulltopmenu a, #bulltopmenu button {
+    color: #FFF;
+}
+
+#bulltopmenu a:hover, #bulltopmenu button:hover {
+    background-color: green;
+}
