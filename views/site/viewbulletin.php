@@ -1,10 +1,21 @@
 <div class="row">
     <div class="col-lg-6 col-md-6">
-        <h3><?=$bulletin->title?></h3>
-        <p>
-            <img src="/<?=$bulletin->getAvatar()?>" alt="ava"
-            style="height: 400px;" />
-        </p>
+        <div class="row">
+            <h3><?=$bulletin->title?></h3>
+            <p>
+                <img src="/<?=$bulletin->getAvatar()?>" alt="ava"
+                    id="bullavatar"
+                style="height: 400px;" />
+            </p>
+        </div>
+        <div class="row">
+            <?php foreach($bulletin->photo as $photo) { ?>
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <img src="/<?=$photo->link?>" alt="photo"
+                    class="thumbnail bullphotos" title="<?=$photo->info?>" />
+            </div>
+            <?php } ?>
+        </div>
     </div>
     <div class="col-lg-6 col-md-6">
         <div class="panel panel-info">
@@ -46,6 +57,3 @@
         </div>
     </div>
 </div>
-
-
-

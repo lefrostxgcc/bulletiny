@@ -126,3 +126,7 @@ a.desc:after {
 #bulltopmenu a:hover, #bulltopmenu button:hover {
     background-color: green;
 }
+
+.bullphotos {
+    height: 80px;
+}
